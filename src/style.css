@@ -17,27 +17,40 @@ body{
     gap: 35px
 }
 
-.location-class{
-    grid-column: 1/2;
-    grid-row: 1/2;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.input-group{
+    margin-top: 15px;
 }
 
-.dt-from{
+.main{
+    grid-row: 3/4;
+    grid-column: 1/4;
+    justify-items: center;
+    border-radius: 13px;
+    padding-top: 15px;
+    height: 80vh;
+    width: 98vw;
+    background-color: #202f49;
+}
+
+.conditions{
     grid-column: 2/3;
-    grid-row: 1/2;
+    
+    display: grid;
+    justify-content: center;
+    /* border: 3px solid rgba(230, 228, 228, 0.982); */
+    
 }
 
-.dt-to{
-    grid-column: 3/4;
-    grid-row: 1/2;
+.title{
+    font-size: 30px;
 }
 
 #submit{
     grid-column: 2/3;
     justify-self: center;
+    font-size: 25px;
+    border-radius: 13px;
+    border: 2px solid white;
     height: 50px;
     width: 150px;
 }
