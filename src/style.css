@@ -11,12 +11,12 @@ html {
     box-sizing: inherit;
 }
 
-body{
+body {
 
     min-height: 100dvh;
     margin: 0;
     font-family: Noto-Sans, Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #192436;
+    background-color: #e9eadaec;
     color: rgb(238, 165, 69);
 
     display: grid;
@@ -24,54 +24,57 @@ body{
     grid-template-rows: 0.3fr 0.3fr 4fr;
 
     justify-items: center;
-    
+
 
     gap: 35px
 }
 
-.input-group{
+.input-group {
     margin-top: 15px;
-    background-color:#202f49;
+    background-color: #202f49;
     border-radius: 10px;
     padding: 15px;
 }
 
-.main{
+.main {
     grid-row: 3/4;
     grid-column: 1/4;
-    /* justify-items: center; */
     border-radius: 13px;
-    padding-top: 15px;
-    /* height: 1fr; */
-    width: 98vw;
-    background-color: #202f49;
     margin-bottom: 15px;
+    width: 98vw;
+    padding-top: 15px;
+    border-top: #202f49;
 
+    background-image: linear-gradient(to bottom right, rgb(75, 224, 162), rgb(0, 151, 88));
+
+    box-shadow: 0px 3px 12px rgb(2, 2, 2);
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
-    grid-template-rows: repeat( auto-fit, minmax(250px, 1fr) );
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
     gap: 15px;
+    color: #202f49;
 }
 
-.conditions{
+.conditions {
     grid-column: 1/2;
-    
+
     display: grid;
     justify-content: center;
     /* border: 3px solid rgba(230, 228, 228, 0.982); */
 
     justify-items: center;
     border-radius: 15px;
-    background-color: #3c5889;
+    background-color: #d9dce0;
     margin: 15px;
-    
+    box-shadow: 2px 3px 3px rgb(119, 117, 117);
+
 }
 
-.title{
-    font-size: 30px;
+.title {
+    font-size: 25px;
 }
 
-.dayContainer{
+.dayContainer {
     display: grid;
     justify-content: center;
     justify-items: center;
@@ -80,13 +83,43 @@ body{
     margin: 15px;
 }
 
-#submit{
+#submit {
     grid-column: 2/3;
     justify-self: center;
     font-size: 25px;
     border-radius: 13px;
-    border: 2px solid white;
+    /* border: 2px solid white; */
+    border: none;
     height: 50px;
     width: 150px;
-    color: green;
+    color: rgb(5, 58, 5);
+    background-color: #52da89;
+}
+
+#submit:hover {
+    cursor: pointer;
+}
+
+.changeTemp {
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none
+}
+
+.changeFormat {
+    border-radius: 10px;
+    border: none;
+    height: 50px;
+    width: 150px;
+    background: #22C1C3;
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)
+}
+
+.changeFormat:hover{
+    cursor: pointer;
+}
+
+img {
+    width: 45px;
+    height: 45px;
 }

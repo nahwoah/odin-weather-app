@@ -1,7 +1,13 @@
 "use strict";
 import "./style.css";
+import cloudy from "./icons/partial-sun.png"
+import rain from "./icons/rain.png"
+import sunny from "./icons/sun.png"
+import night from "./icons/night.png"
+import cloudyNight from "./icons/partial-night.png"
 
 const submit = document.querySelector("#submit");
+const changeFormat = document.querySelector(".changeFormat");
 const location = document.querySelector("#location");
 const dateFrom = document.querySelector("#date-from");
 const dateTo = document.querySelector("#date-to");
@@ -9,6 +15,7 @@ const condo = document.querySelector(".conditions");
 const main = document.querySelector(".main");
 
 let weather = null;
+let format = "F";
 
 async function getWeather(url) {
   try {
@@ -21,6 +28,27 @@ async function getWeather(url) {
     console.error(error);
   }
 }
+
+changeFormat.addEventListener("click", function () {
+  if (weather){
+    const temps = document.querySelectorAll(".temperature")
+    const tempsList = document.getElementsByClassName("temperature");
+    console.log(tempsList)
+    console.log(temps)
+    temps.forEach(element => {
+      console.log(element)
+    });
+  }
+
+
+  if (format === "F") {
+    // temperature.textContent = ((day.temp - 32)/1.8) + "C"
+    format = "C"
+  } else {
+    // temperature.textContent = day.temp + "F"
+    format = "F"
+  }
+})
 
 // getWeather()
 
@@ -55,6 +83,7 @@ function drawDays(weather) {
     const dayContainer = document.createElement("div")
     dayContainer.classList = "dayContainer"
     const dayTitle = document.createElement("p");
+    dayTitle.classList = "title"
     const dateObj = new Date(day.datetime);
     const icon = document.createElement("img");
     const longDate = dateObj.toLocaleDateString("en-US", {
@@ -65,24 +94,39 @@ function drawDays(weather) {
     });
     dayTitle.textContent = longDate
 
-    const datetimeLabel = document.createElement("span");
-    datetimeLabel.textContent = "datetime: "
-    const dt = document.createElement("span");
+    // const datetimeLabel = document.createElement("span");
+    // datetimeLabel.textContent = "datetime: "
+    // const dt = document.createElement("span");
 
-    icon.src = day.icon;
+    switch (day.icon) {
+      case "clear-day":
+        icon.src = sunny;
+      case "clear-night":
+        icon.src = night;
+      case "partly-cloudy-day":
+        icon.src = cloudy;
+      case "partly-cloudy-night":
+        icon.src = cloudyNight;
+      case "rain":
+        icon.src = rain;
+    }
 
-    dt.textContent = day.datetime + " ";
-    dt.appendChild(icon)
-    datetimeLabel.appendChild(dt)
+    // dt.textContent = day.datetime + " ";
+    // dt.appendChild(icon)
+    // datetimeLabel.appendChild(dt)
 
 
 
     const tempLabel = document.createElement("span");
     const temperature = document.createElement("span");
+    temperature.classList.add("temperature");
     temperature.textContent = day.temp
     tempLabel.textContent = "Temperature: "
     tempLabel.appendChild(temperature)
+
     tempLabel.textContent += "F"
+
+
 
     const humidityLabel = document.createElement("span");
     const humidity = document.createElement("span");
@@ -91,7 +135,7 @@ function drawDays(weather) {
     humidityLabel.appendChild(humidity);
     humidityLabel.textContent += "%"
 
-    dayContainer.append(dayTitle, datetimeLabel, tempLabel, humidityLabel)
+    dayContainer.append(dayTitle, icon, tempLabel, humidityLabel)
     main.append(dayContainer)
   }
 }
