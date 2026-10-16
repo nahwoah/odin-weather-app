@@ -11,7 +11,7 @@ const changeFormat = document.querySelector(".changeFormat");
 const location = document.querySelector("#location");
 const dateFrom = document.querySelector("#date-from");
 const dateTo = document.querySelector("#date-to");
-const condo = document.querySelector(".conditions");
+// const condo = document.querySelector(".conditions");
 const main = document.querySelector(".main");
 
 let weather = null;
@@ -55,6 +55,9 @@ changeFormat.addEventListener("click", function () {
 function drawConditions(weather) {
   const conditions = weather.currentConditions
 
+  const condo = document.createElement("div");
+  condo.classList = "conditions";
+
 
   const datetimeLabel = document.createElement("span");
   datetimeLabel.textContent = "datetime: "
@@ -73,6 +76,8 @@ function drawConditions(weather) {
   humidity.textContent = conditions.humidity
   humidityLabel.textContent = "Humidity: "
   humidityLabel.appendChild(humidity)
+
+  main.appendChild(condo)
 
   condo.append(datetimeLabel, tempLabel, humidityLabel)
 }
@@ -101,14 +106,19 @@ function drawDays(weather) {
     switch (day.icon) {
       case "clear-day":
         icon.src = sunny;
+        break;
       case "clear-night":
         icon.src = night;
+        break;
       case "partly-cloudy-day":
         icon.src = cloudy;
+        break;
       case "partly-cloudy-night":
         icon.src = cloudyNight;
+        break;
       case "rain":
         icon.src = rain;
+        break;
     }
 
     // dt.textContent = day.datetime + " ";
@@ -142,6 +152,9 @@ function drawDays(weather) {
 
 submit.addEventListener("click", async function (event) {
   event.preventDefault()
+
+  main.replaceChildren()
+
   const location_value = location.value
   const dateFrom_value = dateFrom.value
   const dateTo_value = dateTo.value
