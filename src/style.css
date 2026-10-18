@@ -81,6 +81,7 @@ body {
     border-radius: 15px;
     background-color: #3c5889;
     margin: 15px;
+    box-shadow: 2px 3px 3px rgb(119, 117, 117);
 }
 
 #submit {

@@ -13,6 +13,13 @@ export default {
     devtool: "eval-source-map",
     devServer: {
         watchFiles: ["./src/template.html"],
+        client: {
+            overlay: {
+                errors: true,
+                warnings: true,
+                runtimeErrors: false,
+            },
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
